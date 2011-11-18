@@ -1,0 +1,57 @@
+<html>
+<head>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+  <style>
+  /* Hmm, for some reason we have to set this here */
+  input{
+    height:28px;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section style="padding-top:60px">
+      <div class="page-header">
+        <h1>Geckoboard Push API Tester</h1>
+      </div>
+      <p>This is a simple tool to demonstrate and test the Geckoboard Push API. For more information about the Push API see the <a href="http://docs.geckoboard.com/api/push.html">documentation site</a>.</p>
+      <% if !session[:error].nil? then %>
+      <p style="color:red"><%= session[:error] %></p>
+      <% session.delete(:error)%>
+      <% end %>
+      
+      <% if !session[:message].nil? then %>
+        <p><%= session[:message] %></p>
+      <% session.delete(:message)%>
+      <% end %>
+
+      <form method="POST" action="/push">
+        <fieldset>
+          <div class="clearfix">
+            <label for="text">Message</label>
+            <div class="input">
+              <textarea name="text" class="xlarge"><%= session[:data].fetch(:text, nil) %></textarea>
+            </div>
+          </div>
+          <div class="clearfix">
+            <label for="widget_key">Widget Key</label>
+            <div class="input">
+              <input type="text" name="widget_key" class="xlarge" size="30" value="<%= session[:data].fetch(:widget_key, nil) %>"/>
+            </div>
+          </div>
+          <div class="clearfix">
+            <label for="api_key">API Key</label>
+            <div class="input">
+              <input type="text" name="api_key" class="xlarge" size="30" value="<%= session[:data].fetch(:api_key, nil) %>"/>
+            </div>
+          </div>
+          <div class="actions">
+                      <input type="submit" class="btn primary" value="Submit">
+          </div>
+          <% session.delete(:data)%>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
