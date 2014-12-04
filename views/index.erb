@@ -14,7 +14,11 @@
       <div class="page-header">
         <h1>Geckoboard Push API Tester</h1>
       </div>
-      <p>This is a simple tool to demonstrate and test the Geckoboard Push API. For more information about the Push API see the <a href="https://developer.geckoboard.com/#push-overview">documentation site</a>.</p>
+      <p>This is a simple tool to demonstrate and test the Geckoboard Push API.<br/>
+         You can find API key from 'Your Account' > 'Account Details' > 'API KEY'.<br/>
+         You get a 'Widget key' when you select the 'Push' option on the 'Method' field (on a custom widget).<br/><br/>
+
+         For more information about the Push API see the <a href="https://developer.geckoboard.com/#push-overview">documentation site</a>.</p>
 
       <% if !session[:error].nil? then %>
       <p style="color:red"><%= session[:error] %></p>
